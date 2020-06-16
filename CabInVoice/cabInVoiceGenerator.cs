@@ -6,12 +6,18 @@ namespace CabInVoice
 {
     public class cabInVoiceGenerator
     {
-        private static readonly int MinimumCostPerKiloMeter = 10;
-        private static readonly int CostPerTime = 1;
+        private static readonly int minimumCostPerKiloMeter = 10;
+        private static readonly int costPerTime = 1;
+        private static readonly double minimumFare = 5;
 
         public double CalculateFare(double distance, int time)
         {
-            return distance * MinimumCostPerKiloMeter + time * CostPerTime;
+            double totalFare = distance * minimumCostPerKiloMeter + time * costPerTime;
+            if (totalFare < minimumFare)
+            {
+                return minimumFare;
+            }
+            return totalFare;
         }
     }
 }
