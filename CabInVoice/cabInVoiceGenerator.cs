@@ -17,13 +17,27 @@ namespace CabInVoice
             return Math.Max(totalFare, minimumFare); 
         }
 
-        public double CalculateMultipleFare()
+        public double CalculateMultipleFare(Ride[] rides)
         {
             double totalFare = 0;
-            totalFare = CalculateFare(2.0, 5);
-            totalFare = totalFare + CalculateFare(0.1, 1);
+            foreach (Ride ride in rides)
+            {
+                totalFare += CalculateFare(ride.distance, ride.time);
+            }
             return totalFare;
         }
 
-    }
+        public InvoiceSummary CalculateMultipleFareUsingSummery(Ride[] rides)
+        {
+            double totalFare = 0;
+            foreach (Ride ride in rides)
+            {
+                totalFare += CalculateFare(ride.distance, ride.time);
+            }
+            return new InvoiceSummary(rides.Length, totalFare); 
+        }
+
+        
+
+}
 }

@@ -35,8 +35,23 @@ namespace CabinVoiceTest
         public void givenMultipleDistanceAndTime_whenPassingArgument_shouldReturnAggregateFare()
         {
             cabInVoiceGenerator invoiceGenerator = new cabInVoiceGenerator();
-            double fare = invoiceGenerator.CalculateMultipleFare();
+            Ride[] rides = { new Ride(2.0,5),
+                            new Ride(0.1, 1)
+                            };
+            double fare = invoiceGenerator.CalculateMultipleFare(rides);
             Assert.AreEqual(30, fare);
+        }
+
+        [Test]
+        public void GivenMultipleRides_ShouldReturnInvoiceSummary()
+        {
+            cabInVoiceGenerator invoiceGenerator = new cabInVoiceGenerator();
+            Ride[] rides = { new Ride(2.0,5),
+                            new Ride(0.1, 1)
+                            };
+            InvoiceSummary summary = invoiceGenerator.CalculateMultipleFareUsingSummery(rides);
+            InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30.0);
+            Assert.AreEqual(expectedInvoiceSummary, summary);
         }
     }
 }
