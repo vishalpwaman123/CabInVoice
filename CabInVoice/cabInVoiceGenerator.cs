@@ -19,5 +19,14 @@ namespace CabInVoice
             }
             return totalFare;
         }
+
+        public double CalculateMultipleFare()
+        {
+            double totalFare = 0;
+            totalFare = CalculateFare(2.0, 5);
+            totalFare = totalFare + CalculateFare(0.1, 1);
+            return totalFare;
+        }
+
     }
 }
