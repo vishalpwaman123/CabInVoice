@@ -6,11 +6,17 @@ namespace CabinVoiceTest
 {
     public class Tests
     {
+        InvoiceService invoiceService = null;
         [SetUp]
-        public void Setup()
+        public void SetUp()
         {
+            invoiceService = new InvoiceService();
+
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [Test]
         public void givenDistanceAndTime_WhenPassingArragment_ShouldReturnTotalFare()
         {
@@ -21,6 +27,9 @@ namespace CabinVoiceTest
             Assert.AreEqual(25, fare);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [Test]
         public void givenLessDistanceAndTime_whenPassingArgument_shouldReturnMinimumFare()
         {
@@ -30,7 +39,10 @@ namespace CabinVoiceTest
             double fare = invoiceGenerator.CalculateFare(distance, time);
             Assert.AreEqual(5, fare);
         }
-
+      
+        /// <summary>
+        /// 
+        /// </summary>
         [Test]
         public void givenMultipleDistanceAndTime_whenPassingArgument_shouldReturnAggregateFare()
         {
@@ -42,6 +54,9 @@ namespace CabinVoiceTest
             Assert.AreEqual(30, fare);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [Test]
         public void GivenMultipleRides_ShouldReturnInvoiceSummary()
         {
@@ -53,5 +68,23 @@ namespace CabinVoiceTest
             InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30.0);
             Assert.AreEqual(expectedInvoiceSummary, summary);
         }
+
+        /// <summary>
+        /// Given UserId and Rides When Calculated should return invoice summary
+        /// </summary>
+        [Test]
+        public void GivenUserIdAndRides_WhenCalculated_shouldReturnInvoiceSummary()
+        {
+            string userId = "abc@g.com";
+            Ride[] rides = {
+                             new Ride(2.0, 5),
+                             new Ride(0.1, 1)
+            };
+            invoiceService.AddRides(userId, rides);
+            InvoiceSummary summary = invoiceService.GetInvoiceSummary(userId);
+            InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30.0);
+            Assert.AreEqual(expectedInvoiceSummary, summary);
+        }
+
     }
 }

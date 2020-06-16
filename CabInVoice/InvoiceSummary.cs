@@ -6,11 +6,16 @@ namespace CabInVoice
 {
    public class InvoiceSummary
     {
-
+        //Declare Variable for InvoiceSummery
         public int numberOfRides;
         public double totalFare;
         public double averageFare;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="numberOfRides"></param>
+        /// <param name="totalFare"></param>
         public InvoiceSummary(int numberOfRides, double totalFare)
         {
             this.numberOfRides = numberOfRides;
@@ -18,6 +23,11 @@ namespace CabInVoice
             this.averageFare = this.totalFare / this.numberOfRides;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns></returns>
         override
         public bool Equals(Object o)
         {

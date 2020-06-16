@@ -6,10 +6,17 @@ namespace CabInVoice
 {
     public class cabInVoiceGenerator
     {
-        private static readonly int minimumCostPerKiloMeter = 10;
-        private static readonly int costPerTime = 1;
-        private static readonly double minimumFare = 5;
+        // Declare variable for fare
+        private const int minimumCostPerKiloMeter = 10;
+        private const int costPerTime = 1;
+        private const double minimumFare = 5;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="distance"></param>
+        /// <param name="time"></param>
+        /// <returns></returns>
         public double CalculateFare(double distance, int time)
         {
             double totalFare = distance * minimumCostPerKiloMeter + time * costPerTime;
@@ -17,6 +24,11 @@ namespace CabInVoice
             return Math.Max(totalFare, minimumFare); 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rides"></param>
+        /// <returns></returns>
         public double CalculateMultipleFare(Ride[] rides)
         {
             double totalFare = 0;
@@ -27,6 +39,11 @@ namespace CabInVoice
             return totalFare;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rides"></param>
+        /// <returns></returns>
         public InvoiceSummary CalculateMultipleFareUsingSummery(Ride[] rides)
         {
             double totalFare = 0;
