@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using CabInVoice;
 
 namespace CabinVoiceTest
 {
@@ -10,9 +11,13 @@ namespace CabinVoiceTest
         }
 
         [Test]
-        public void Test1()
+        public void GivenDistanceAndTime_ShouldReturnTotalFare()
         {
-            Assert.Pass();
+            cabInVoiceGenerator invoiceGenerator = new cabInVoiceGenerator();
+            double distance = 2.0;
+            int time = 5;
+            double fare = invoiceGenerator.CalculateFare(distance, time);
+            Assert.AreEqual(25, fare);
         }
     }
 }
