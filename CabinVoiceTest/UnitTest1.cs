@@ -11,7 +11,6 @@ namespace CabinVoiceTest
         public void SetUp()
         {
             invoiceService = new InvoiceService();
-
         }
 
         /// <summary>
@@ -58,7 +57,7 @@ namespace CabinVoiceTest
         /// 
         /// </summary>
         [Test]
-        public void GivenMultipleRides_ShouldReturnInvoiceSummary()
+        public void GivenMultipleRides_whenPassingArgument_ShouldReturnInvoiceSummary()
         {
             cabInVoiceGenerator invoiceGenerator = new cabInVoiceGenerator();
             Ride[] rides = { new Ride(2.0,5),
@@ -86,5 +85,19 @@ namespace CabinVoiceTest
             Assert.AreEqual(expectedInvoiceSummary, summary);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        [Test]
+        public void GivenNormalAndPremiumRides_WhenCalculated_shouldReturnInvoiceSummary()
+        {
+            PremiumRide[] premiumRides = {
+                            new PremiumRide(2.0, 5),
+                            new PremiumRide(0.1, 1)
+            };
+            InvoiceSummary premiumRideSummary = invoiceService.PremiumCalculateFare(premiumRides);
+            InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 40.0);
+            Assert.AreEqual(expectedInvoiceSummary, premiumRideSummary);
+        }
     }
 }

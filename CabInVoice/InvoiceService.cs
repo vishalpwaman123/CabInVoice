@@ -11,6 +11,7 @@ namespace CabInVoice
         public const double CostPerTime = 1;
         public const double MinimumFare = 5;
         public RideRepository rideRepository;
+        public const int PremiumCostPerTime = 15;
 
         public InvoiceService()
         {
@@ -24,8 +25,10 @@ namespace CabInVoice
         /// <returns></returns>
         public static double CalculateFare(double distance, int time)
         {
+
             double totalFare = (distance * MinimumCostPerTime) + (time * CostPerTime);
             return Math.Max(totalFare, MinimumFare);
+
         }
 
         /// <summary>
@@ -35,6 +38,7 @@ namespace CabInVoice
         /// <returns></returns>
         public InvoiceSummary CalculateFare(Ride[] rides)
         {
+
             double totalFare = 0;
             foreach (Ride ride in rides)
             {
@@ -42,6 +46,8 @@ namespace CabInVoice
             }
             return new InvoiceSummary(rides.Length, totalFare);
         }
+
+
 
         /// <summary>
         /// Add Rides TO Ride Repository
@@ -63,5 +69,23 @@ namespace CabInVoice
             return this.CalculateFare(rideRepository.GetRides(userId));
         }
 
+        public static double PremiumCalculateFare(double distance, int time)
+        {
+            double totalFare = (distance * PremiumCostPerTime) + (time * CostPerTime);
+            return Math.Max(totalFare, MinimumFare);
+        }
+
+        public InvoiceSummary PremiumCalculateFare(PremiumRide[] premiumRides)
+        {
+            double totalFare = 0;
+            foreach (PremiumRide ride in premiumRides)
+            {
+                totalFare += PremiumCalculateFare(ride.distance, ride.time);
+            }
+            return new InvoiceSummary(premiumRides.Length, totalFare);
+        }
+
+
     }
 }
+

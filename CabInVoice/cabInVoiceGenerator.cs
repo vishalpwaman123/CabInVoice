@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CabInVoice
 {
-    public class cabInVoiceGenerator
+    public class cabInVoiceGenerator : Exception
     {
         // Declare variable for fare
         private const int minimumCostPerKiloMeter = 10;
@@ -19,8 +19,10 @@ namespace CabInVoice
         /// <returns></returns>
         public double CalculateFare(double distance, int time)
         {
+            if (distance == 0.0 || time == 0)
+            { throw new CabInvoiceAnalyserException("Invalid Argument", CabInvoiceAnalyserException.ExceptionType.INVALID_ARGUMENT_EXCEPTION); }
+
             double totalFare = distance * minimumCostPerKiloMeter + time * costPerTime;
-            
             return Math.Max(totalFare, minimumFare); 
         }
 
@@ -31,6 +33,9 @@ namespace CabInVoice
         /// <returns></returns>
         public double CalculateMultipleFare(Ride[] rides)
         {
+            if (rides==null)
+            { throw new CabInvoiceAnalyserException("Null Argument Not Allow", CabInvoiceAnalyserException.ExceptionType.NULL_REFERENCE_EXCEPTION); }
+
             double totalFare = 0;
             foreach (Ride ride in rides)
             {
