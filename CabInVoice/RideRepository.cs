@@ -15,6 +15,10 @@ namespace CabInVoice
 
             public void AddRide(string userId, Ride[] rides)
             {
+                if(rides==null)
+                {
+                throw new CabInvoiceAnalyserException("Invalid Argument", CabInvoiceAnalyserException.ExceptionType.NULL_REFERENCE_EXCEPTION);
+                }
                 bool rideList = this.userRides.ContainsKey(userId);
                 if (rideList == false)
                 {

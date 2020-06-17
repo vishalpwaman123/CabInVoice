@@ -66,17 +66,29 @@ namespace CabInVoice
         /// <returns></returns>
         public InvoiceSummary GetInvoiceSummary(string userId)
         {
+            if (userId == null)
+            {
+                throw new CabInvoiceAnalyserException("Invalid Argument", CabInvoiceAnalyserException.ExceptionType.NULL_REFERENCE_EXCEPTION);
+            }
             return this.CalculateFare(rideRepository.GetRides(userId));
         }
 
         public static double PremiumCalculateFare(double distance, int time)
         {
+            if (distance == 0.0)
+            {
+                throw new CabInvoiceAnalyserException("Invalid Argument", CabInvoiceAnalyserException.ExceptionType.INVALID_ARGUMENT_EXCEPTION);
+            }
             double totalFare = (distance * PremiumCostPerTime) + (time * CostPerTime);
             return Math.Max(totalFare, MinimumFare);
         }
 
         public InvoiceSummary PremiumCalculateFare(PremiumRide[] premiumRides)
         {
+            if (premiumRides == null)
+            {
+                throw new CabInvoiceAnalyserException("Invalid Argument", CabInvoiceAnalyserException.ExceptionType.NULL_REFERENCE_EXCEPTION);
+            }
             double totalFare = 0;
             foreach (PremiumRide ride in premiumRides)
             {

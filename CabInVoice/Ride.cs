@@ -17,6 +17,8 @@ namespace CabInVoice
         /// <param name="time"></param>
         public Ride(double distance, int time)
         {
+            if (distance == 0.0 || time == 0)
+                throw new CabInvoiceAnalyserException("Invalid Argument", CabInvoiceAnalyserException.ExceptionType.INVALID_ARGUMENT_EXCEPTION); 
             this.distance = distance;
             this.time = time;
         }
