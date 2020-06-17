@@ -74,6 +74,25 @@ namespace CabinVoiceTest
         /// 
         /// </summary>
         [Test]
+        public void givenMultipleDistanceAndTime_whenPassingNullArgument_shouldReturnAggregateFare()
+        {
+            try
+            {
+                cabInVoiceGenerator invoiceGenerator = new cabInVoiceGenerator();
+                Ride[] rides = null;
+                double fare = invoiceGenerator.CalculateMultipleFare(rides);
+            }
+            catch (CabInvoiceAnalyserException e)
+            {
+                Assert.AreEqual(CabInvoiceAnalyserException.ExceptionType.NULL_REFERENCE_EXCEPTION, e.type);
+            }
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Test]
         public void GivenMultipleRides_whenPassingArgument_ShouldReturnInvoiceSummary()
         {
             cabInVoiceGenerator invoiceGenerator = new cabInVoiceGenerator();
