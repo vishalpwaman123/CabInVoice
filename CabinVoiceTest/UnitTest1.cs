@@ -30,6 +30,23 @@ namespace CabinVoiceTest
         /// 
         /// </summary>
         [Test]
+        public void givenDistanceAndTime_WhenPassingIntegerArragment_ShouldThrowException()
+        {
+            try
+            {
+                cabInVoiceGenerator invoiceGenerator = new cabInVoiceGenerator();
+                double fare = invoiceGenerator.CalculateFare(0.0, 0);
+            }
+            catch (CabInvoiceAnalyserException e)
+            {
+                Assert.AreEqual(CabInvoiceAnalyserException.ExceptionType.INVALID_ARGUMENT_EXCEPTION, e.type);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Test]
         public void givenLessDistanceAndTime_whenPassingArgument_shouldReturnMinimumFare()
         {
             cabInVoiceGenerator invoiceGenerator = new cabInVoiceGenerator();
@@ -83,6 +100,26 @@ namespace CabinVoiceTest
             InvoiceSummary summary = invoiceService.GetInvoiceSummary(userId);
             InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30.0);
             Assert.AreEqual(expectedInvoiceSummary, summary);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Test]
+        public void GivenMultipleRides_WhenPassingWrongArgument_ShouldReturnInvoiceSummary()
+        {
+            try
+            {
+                cabInVoiceGenerator invoiceGenerator = new cabInVoiceGenerator();
+                Ride[] rides = { new Ride(0,0),
+                            new Ride(0,0)
+                            };
+                InvoiceSummary summary = invoiceGenerator.CalculateMultipleFareUsingSummery(rides);
+            }
+            catch (CabInvoiceAnalyserException e)
+            {
+                Assert.AreEqual(CabInvoiceAnalyserException.ExceptionType.INVALID_ARGUMENT_EXCEPTION, e.type);
+            }
         }
 
         /// <summary>
