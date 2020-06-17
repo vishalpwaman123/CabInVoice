@@ -12,7 +12,7 @@ namespace CabInVoice
         public double averageFare;
 
         /// <summary>
-        /// 
+        /// In Function Calculate Average Fare
         /// </summary>
         /// <param name="numberOfRides"></param>
         /// <param name="totalFare"></param>
@@ -28,7 +28,7 @@ namespace CabInVoice
         }
 
         /// <summary>
-        /// 
+        /// In Function Compare Number of ride , total fare and Average Fare
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
@@ -46,6 +46,5 @@ namespace CabInVoice
                 totalFare.CompareTo(that.totalFare) == 0 &&
                 averageFare.CompareTo(that.averageFare) == 0;
         }
-
     }
 }

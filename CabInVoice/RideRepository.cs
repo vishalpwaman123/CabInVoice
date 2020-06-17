@@ -6,13 +6,20 @@ namespace CabInVoice
 {
     public class RideRepository
     {
+            //Assign Null value To Dictionary
             Dictionary<string, List<Ride>> userRides = null;
-
+            
+            //Declare Dictionary 
             public RideRepository()
             {
                 this.userRides = new Dictionary<string, List<Ride>>();
             }
 
+            /// <summary>
+            /// In Function Add UserId and rides To List
+            /// </summary>
+            /// <param name="userId"></param>
+            /// <param name="rides"></param>
             public void AddRide(string userId, Ride[] rides)
             {
                 if(rides==null)
@@ -27,7 +34,12 @@ namespace CabInVoice
                     this.userRides.Add(userId, list);
                 }
             }
-
+            
+            /// <summary>
+            /// Return user Id In form of Array
+            /// </summary>
+            /// <param name="userId"></param>
+            /// <returns></returns>
             public Ride[] GetRides(string userId)
             {
                 return this.userRides[userId].ToArray();

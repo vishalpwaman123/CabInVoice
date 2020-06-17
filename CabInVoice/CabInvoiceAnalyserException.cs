@@ -6,13 +6,12 @@ namespace CabInVoice
 {
     public class CabInvoiceAnalyserException : Exception
     {
-
+        //Declare Global Variable
         public string message;
 
         /// <summary>
         /// Enum is Used to define Enumerated Data types
         /// </summary>
-
         public enum ExceptionType
         {
             NULL_REFERENCE_EXCEPTION,

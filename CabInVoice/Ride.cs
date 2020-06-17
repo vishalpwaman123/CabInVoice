@@ -11,7 +11,7 @@ namespace CabInVoice
         public int time;
 
         /// <summary>
-        /// 
+        /// Assign Value to Current distance and time
         /// </summary>
         /// <param name="distance"></param>
         /// <param name="time"></param>
@@ -22,6 +22,5 @@ namespace CabInVoice
             this.distance = distance;
             this.time = time;
         }
-
     }
 }

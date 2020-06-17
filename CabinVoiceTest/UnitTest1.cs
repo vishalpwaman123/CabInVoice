@@ -14,7 +14,7 @@ namespace CabinVoiceTest
         }
 
         /// <summary>
-        /// 
+        /// Given Distance And Time When Passing Arragment Should Return Total Fare
         /// </summary>
         [Test]
         public void givenDistanceAndTime_WhenPassingArragment_ShouldReturnTotalFare()
@@ -33,7 +33,7 @@ namespace CabinVoiceTest
         }
 
         /// <summary>
-        /// 
+        /// Given Distance And Time When Passing Integer Arragment Should Throw Exception
         /// </summary>
         [Test]
         public void givenDistanceAndTime_WhenPassingIntegerArragment_ShouldThrowException()
@@ -50,7 +50,7 @@ namespace CabinVoiceTest
         }
 
         /// <summary>
-        /// 
+        /// Given Less Distance And Time when Passing Argument Should Return Minimum Fare
         /// </summary>
         [Test]
         public void givenLessDistanceAndTime_whenPassingArgument_shouldReturnMinimumFare()
@@ -68,9 +68,9 @@ namespace CabinVoiceTest
                 Assert.AreEqual(CabInvoiceAnalyserException.ExceptionType.INVALID_ARGUMENT_EXCEPTION, e.type);
             }
         }
-      
+
         /// <summary>
-        /// 
+        /// Given Multiple Distance And Time when Passing Argument should Return Aggregate Fare
         /// </summary>
         [Test]
         public void givenMultipleDistanceAndTime_whenPassingArgument_shouldReturnAggregateFare()
@@ -91,7 +91,7 @@ namespace CabinVoiceTest
         }
 
         /// <summary>
-        /// 
+        /// Given Multiple Distance And Time when Passing Null Argument should Return Aggregate Fare
         /// </summary>
         [Test]
         public void givenMultipleDistanceAndTime_whenPassingNullArgument_shouldReturnAggregateFare()
@@ -109,7 +109,7 @@ namespace CabinVoiceTest
         }
 
         /// <summary>
-        /// 
+        /// Given Multiple Rides when Passing Argument Should Return Invoice Summary
         /// </summary>
         [Test]
         public void GivenMultipleRides_whenPassingArgument_ShouldReturnInvoiceSummary()
@@ -155,7 +155,7 @@ namespace CabinVoiceTest
         }
 
         /// <summary>
-        /// 
+        /// Given Multiple Rides When Passing Wrong Argument Should Return Invoice Summary
         /// </summary>
         [Test]
         public void GivenMultipleRides_WhenPassingWrongArgument_ShouldReturnInvoiceSummary()
@@ -175,7 +175,7 @@ namespace CabinVoiceTest
         }
 
         /// <summary>
-        /// 
+        /// Given Normal And Premium Rides When Calculated should Return Invoice Summary
         /// </summary>
         [Test]
         public void GivenNormalAndPremiumRides_WhenCalculated_shouldReturnInvoiceSummary()

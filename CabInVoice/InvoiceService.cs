@@ -6,7 +6,7 @@ namespace CabInVoice
 {
     public class InvoiceService
     {
-
+        //Declare Global Variable
         public const int MinimumCostPerTime = 10;
         public const double CostPerTime = 1;
         public const double MinimumFare = 5;
@@ -17,6 +17,7 @@ namespace CabInVoice
         {
             this.rideRepository = new RideRepository();
         }
+
         /// <summary>
         /// Function for Calculating totalFare 
         /// </summary>
@@ -47,8 +48,6 @@ namespace CabInVoice
             return new InvoiceSummary(rides.Length, totalFare);
         }
 
-
-
         /// <summary>
         /// Add Rides TO Ride Repository
         /// </summary>
@@ -73,6 +72,12 @@ namespace CabInVoice
             return this.CalculateFare(rideRepository.GetRides(userId));
         }
 
+        /// <summary>
+        /// In Function Calculate Total Fare  and return max fare
+        /// </summary>
+        /// <param name="distance"></param>
+        /// <param name="time"></param>
+        /// <returns></returns>
         public static double PremiumCalculateFare(double distance, int time)
         {
             if (distance == 0.0)
@@ -83,6 +88,11 @@ namespace CabInVoice
             return Math.Max(totalFare, MinimumFare);
         }
 
+        /// <summary>
+        /// In calculate total fare Using Invoice Summary
+        /// </summary>
+        /// <param name="premiumRides"></param>
+        /// <returns></returns>
         public InvoiceSummary PremiumCalculateFare(PremiumRide[] premiumRides)
         {
             if (premiumRides == null)
@@ -96,8 +106,6 @@ namespace CabInVoice
             }
             return new InvoiceSummary(premiumRides.Length, totalFare);
         }
-
-
     }
 }
 

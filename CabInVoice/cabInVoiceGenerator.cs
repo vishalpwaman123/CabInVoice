@@ -12,7 +12,7 @@ namespace CabInVoice
         private const double minimumFare = 5;
 
         /// <summary>
-        /// 
+        /// IN Function Calculate Total Fare and return Max Fare
         /// </summary>
         /// <param name="distance"></param>
         /// <param name="time"></param>
@@ -27,7 +27,7 @@ namespace CabInVoice
         }
 
         /// <summary>
-        /// 
+        /// In Function Calculate TotalFare
         /// </summary>
         /// <param name="rides"></param>
         /// <returns></returns>
@@ -45,7 +45,7 @@ namespace CabInVoice
         }
 
         /// <summary>
-        /// 
+        /// In Function Calculate Total Fare
         /// </summary>
         /// <param name="rides"></param>
         /// <returns></returns>
@@ -56,10 +56,7 @@ namespace CabInVoice
             {
                 totalFare += CalculateFare(ride.distance, ride.time);
             }
-            return new InvoiceSummary(rides.Length, totalFare); 
+            return new InvoiceSummary(rides.Length, totalFare);
         }
-
-        
-
 }
 }
